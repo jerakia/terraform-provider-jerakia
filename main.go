@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/hashicorp/terraform/plugin"
-	"github.com/jtopjian/terraform-provider-jerakia/jerakia"
+	"github.com/jerakia/terraform-provider-jerakia/jerakia"
 )
 
 func main() {

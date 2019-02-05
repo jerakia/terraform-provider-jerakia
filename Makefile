@@ -1,13 +1,14 @@
-.ONESHELL:
+TARGETS=darwin linux windows
+
 testacc:
-	rm -rf work
-	mkdir work && cd work
-	git clone https://github.com/jerakia/go-jerakia
-	cd go-jerakia
-	make docker
-	export JERAKIA_TOKEN=$$(docker exec jerakia-server jerakia token create terraform --quiet)
-	export JERAKIA_URL="http://localhost:9843/v1"
-	cd ../..
+	rm -rf work ; \
+	mkdir work && cd work ; \
+	git clone https://github.com/jerakia/go-jerakia ; \
+	cd go-jerakia ; \
+	make docker ; \
+	export JERAKIA_TOKEN=$$(docker exec jerakia-server jerakia token create terraform --quiet) ; \
+	export JERAKIA_URL="http://localhost:9843/v1" ; \
+	cd ../.. ; \
 	TF_LOG=DEBUG TF_ACC=1 go test -v -run="$(TESTARGS)" ./jerakia/
 
 build:

@@ -43,8 +43,8 @@ or libraries to be installed on your workstation.
 2. Run:
 
 ```shell
-$ go get -v -u github.com/jtopjian/terraform-provider-jerakia
-$ cd $GOPATH/src/github.com/jtopjian/terraform-provider-jerakia
+$ go get -v -u github.com/jerakia/terraform-provider-jerakia
+$ cd $GOPATH/src/github.com/jerakia/terraform-provider-jerakia
 $ make build
 ```
 
@@ -61,7 +61,7 @@ This project is using [Go Modules][5] for vendor support.
 Full documentation can be found in the [`docs`][6] directory.
 
 [1]: http://terraform.io
-[2]: https://github.com/jtopjian/terraform-provider-jerakia/releases
+[2]: https://github.com/jerakia/terraform-provider-jerakia/releases
 [3]: https://www.terraform.io/docs/plugins/basics.html#installing-a-plugin
 [4]: https://golang.org/doc/install
 [5]: https://github.com/golang/go/wiki/Modules

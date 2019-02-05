@@ -1,0 +1,32 @@
+sudo: required
+language: go
+services:
+  - docker
+
+go:
+  - '1.11'
+
+env:
+  - GO111MODULE=on
+
+matrix:
+  fast_finish: true
+
+script:
+  - make fmtcheck
+  - make vet
+  - make testacc
+
+before_deploy:
+  - make targets
+
+deploy:
+  provider: releases
+  api_key:
+    secure: QVBWR4JXF6OrqhUZgVgeYRIXDIK7OiHyve5s3Ii5fl4KRA2h4wXhg9C8GdlgRV/Er+ICTpFjMKx1UYgs8/F6/kZhFOaJxmtJ0LRnkbD/12yhU6rDxFwazBKctDCFIlARBEzqdWl2DVS0d7augkiQONubsPdevRXdZ6A4OjKw5El2APEeKCojjyRR0jpmf7eh46aooyDQ6j/axK/t+ZO/AwNfseYfxAFfqN6GhysH+AKSCaTe32FSJO3kjNsDZsH9TSf1v5X4zsKC891+Ab1HLdn2Yf96ervuaBeWnz6SewWPatlGk5hMyUvsmUM2wHjrpaYGYMy8w9OGCj0cpvgdOn+WvAPWbBDyy4SdBNXDcjCuwYAvEd6oy8+osbTHpuNzmghhwH+i6SFuaOlWKP6PDl6o0sG2ZpxPS0wVy7SfAoKFm9/FTjxZ2oZHxBi8JGNuQy9l0OBSPOSZG06EspNQVnwsiE+1Fsghw0CYnhSj7ZkhJOK2Un9nARJsEwRXr371fYBEYCLkhWOqIitEXjO1r8SWRRNQLpk4oI4e52KNS/shGodh2EKDkGfh3AAzeHaWj7rBVqQN9vN15t8ZgVLRL9oXNuaZvjXagiSa/aP5oYKR7Z1tVPkiTvBsIvZMvYnhC4M+LOohJwy36NPZxz37y6oK2JOfE7IliiWbQIbPlKk=
+  file: dist/*.zip
+  file_glob: true
+  skip_cleanup: true
+  on:
+    repo: jerakia/terraform-provider-jerakia
+    tags: true
